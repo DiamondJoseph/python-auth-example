@@ -1,0 +1,20 @@
+authn:
+  oidc:
+    clientId: "foo"
+    clientSecret: "bar"
+    wellKnown: ".well_known"
+authz:
+  opa:
+    host: "opa"
+
+image:
+  repository: ghcr.io/diamondjoseph/python-authz-example
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+service:
+  type: ClusterIP
+
+ingress:
+  host: chart-example.local
