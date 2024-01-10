@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-auth-example
+spec:
+  selector:
+    matchLabels:
+      app: python-auth-example
+  template:
+    spec:
+      containers:
+        - name: python-auth-example
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          env:
+          - name: OIDC_CLIENT_ID
+            value: {{ required "authn.oidc.clientId" .Values.authn.oidc.clientId }}          
+          - name: OIDC_CLIENT_SECRET
+            value: {{ required "authn.oidc.clientSecret" .Values.authn.oidc.clientSecret }}          
+          - name: OIDC_WELL_KNOWN
+            value: {{ required "authn.oidc.wellKnown" .Values.authn.oidc.wellKnown }}          
+          - name: APP_URI
+            value: {{ required "ingress.host" .Values.ingress.host }}
+          - name: OPA_HOST
+            value: {{ required "authz.opa.host" .Values.authz.opa.host }}
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
