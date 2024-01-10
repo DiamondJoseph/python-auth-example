@@ -8,7 +8,7 @@ authz:
     host: "opa"
 
 image:
-  repository: ghcr.io/diamondjoseph/python-authz-example
+  repository: ghcr.io/diamondjoseph/python-auth-example
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
