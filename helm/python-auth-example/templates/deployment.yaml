@@ -7,6 +7,9 @@ spec:
     matchLabels:
       app: python-auth-example
   template:
+    metadata:
+      labels:
+        app: python-auth-example
     spec:
       containers:
         - name: python-auth-example
