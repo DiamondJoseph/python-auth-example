@@ -10,7 +10,22 @@
             "request": "launch",
             "module": "uvicorn",
             "args": ["src.python-auth-example.app:app","--reload"]
+        },
+        {
+            "name": "Python: Remote Attach",
+            "type": "python",
+            "request": "attach",
+            "connect": {
+                "host": "LOADBALANCER_IP",
+                "port": 5678
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "/app"
+                }
+            ],
+            "justMyCode": false
         }
-        
     ]
 }

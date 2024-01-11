@@ -33,6 +33,8 @@ spec:
             value: {{ required "ingress.host" .Values.ingress.host }}
           - name: OPA_HOST
             value: {{ required "authz.opa.host" .Values.authz.opa.host }}
+          - name: DEBUG
+            value: {{ default false .Values.debug | quote }}
           # livenessProbe:
           #   httpGet:
           #     path: /
