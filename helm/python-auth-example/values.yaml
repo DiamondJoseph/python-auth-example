@@ -6,6 +6,7 @@ authn:
 authz:
   opa:
     host: "opa"
+    decision: httpapi/authz
 debug: false
 
 image:

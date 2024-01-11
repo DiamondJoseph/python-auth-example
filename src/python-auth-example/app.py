@@ -21,7 +21,7 @@ oidc_config = OIDCConfig(
     scope="openid"
 )
 oidc_auth = OIDCAuthentication(oidc_config)
-opa_config = OPAConfig(authentication=oidc_auth, opa_host=os.getenv("OPA_HOST"))
+opa_config = OPAConfig(authentication=oidc_auth, opa_host=os.getenv("OPA_HOST"), package_name=os.getenv("OPA_DECISION"))
 
 app = FastAPI()
 app.add_middleware(OPAMiddleware, config=opa_config)
