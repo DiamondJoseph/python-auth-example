@@ -18,6 +18,7 @@ oidc_config = OIDCConfig(
     client_id=os.getenv("OIDC_CLIENT_ID"),
     client_secret=os.getenv("OIDC_CLIENT_SECRET"),
     well_known_endpoint=os.getenv("OIDC_WELL_KNOWN"),
+    scope="openid"
 )
 oidc_auth = OIDCAuthentication(oidc_config)
 opa_config = OPAConfig(authentication=oidc_auth, opa_host=os.getenv("OPA_HOST"))
