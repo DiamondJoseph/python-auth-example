@@ -9,5 +9,10 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+      {{- if .Values.debug }}
+    - port: 5678
+      targetPort: debug
+      name: debug
+      {{- end }}
   selector:
     app: python-auth-example
