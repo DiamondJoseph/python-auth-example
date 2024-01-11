@@ -7,6 +7,12 @@ from fastapi_opa import OPAMiddleware
 from fastapi_opa.auth import OIDCAuthentication
 from fastapi_opa.auth import OIDCConfig
 
+if os.getenv("DEBUG"):
+    import debugpy
+    debugpy.listen(("0.0.0.0", 5678))
+    print("Waiting for client to attach...")
+    debugpy.wait_for_client()
+
 oidc_config = OIDCConfig(
     app_uri=os.getenv("APP_URI"),
     client_id=os.getenv("OIDC_CLIENT_ID"),

@@ -6,6 +6,7 @@ authn:
 authz:
   opa:
     host: "opa"
+debug: false
 
 image:
   repository: ghcr.io/diamondjoseph/python-auth-example

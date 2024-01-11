@@ -18,6 +18,10 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+            {{- if .Values.debug }}
+            - name: debug
+              containerPort: 5678
+            {{- end }}
           env:
           - name: OIDC_CLIENT_ID
             value: {{ required "authn.oidc.clientId" .Values.authn.oidc.clientId }}          
