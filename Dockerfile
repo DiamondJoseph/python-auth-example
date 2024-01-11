@@ -2,7 +2,7 @@ FROM python:3-slim
 
 WORKDIR /app
 RUN python -m venv .venv
-ENV PATH="/app/.venv:$PATH"
+ENV PATH="/app/.venv/bin:$PATH"
 
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
